@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Marcellus+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>My Roster</title>
+</head>
+
+<body>
+
+    <div id="insert">
+        <input id="teamName" type="text" placeholder="Enter team name">
+        <button id="submitBtn">Submit</button>
+        <button id="dreamTeam">Dream Team</button>
+    </div>
+
+    <div id="container"></div>
+
+
+    <script id="player-template" type="text/x-handlebars">
+        {{#each player}}
+        <div class="player">
+            <div class="name">{{firstName}} {{lastName}}</div>
+            <div class="jersey">{{jersey}}</div>
+            <img src={{img}}>
+            <div class="position">Position: {{position}}</div>
+            {{#unless onDreamTeam}}
+              <button class="addPlayer" data-first={{firstName}} data-last={{lastName}}>Add to dream team</button>
+              {{/unless}}
+              {{#if onDreamTeam}}
+              <button class="deletePlayer" data-first={{firstName}} data-last={{lastName}}>Delete from dream team</button> 
+              {{/if}}
+        </div>
+        {{/each}}
+    </script>
+
+
+
+
+    <script src="./handlebars/dist/handlebars.js"></script>
+    <script src="./jquery/dist/jquery.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
